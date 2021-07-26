@@ -9,11 +9,13 @@ public class Virus extends Actor
     //Creditos de código: User: Pammota(21/6/2017) https://www.greenfoot.org/topics/59490/0
     MyWorld inmun;
     MyWorld perder; 
+    Menu dific;
     public void act() 
     {
         int vacunas = 0;
         moveAndTurn();
         eat();
+        eat2();
     }
     //Extraido de Greenfoot tutorials y contribuciones propias
     //Método que permite al virus moverse aleatoriamente por el mapa
@@ -37,6 +39,17 @@ public class Virus extends Actor
     public boolean getInmunidad(){
         boolean inmunidad;
         inmunidad = true;
+        if (inmun.inmune == 15){
+            inmunidad = true;
+        }if (inmun.inmune != 15){
+            inmunidad = false;
+         }
+        return inmunidad;
+    }
+    
+    public boolean getInmunidad2(){
+        boolean inmunidad;
+        inmunidad = true;
         if (inmun.inmune == 10){
             inmunidad = true;
         }if (inmun.inmune != 10){
@@ -48,17 +61,38 @@ public class Virus extends Actor
     //Método que permite al virus infectar a la persona para terminar el juego.
     private void eat()
     {
-        boolean b = getInmunidad();
-        if (b == false){
-            Actor persona;
-            persona = getOneObjectAtOffset(0, 0, Persona.class);
-            if (persona != null)
-            {
-                World world;
-                world = getWorld();
-                world.removeObject(persona);
-                getWorld().showText("Perdiste! Tu puntaje fue de: " + perder.vacunas, 300, 250);
-                //Greenfoot.playSound("eating.wav");
+        if(dific.opcion ==0){
+            boolean b = getInmunidad();
+            if (b == false){
+                Actor persona;
+                persona = getOneObjectAtOffset(0, 0, Persona.class);
+                if (persona != null)
+                {
+                    World world;
+                    world = getWorld();
+                    world.removeObject(persona);
+                    getWorld().showText("Perdiste! Tu puntaje fue de: " + perder.vacunas, 300, 250);
+                    Greenfoot.playSound("tos.wav");
+                }
+            }
+        }
+    }
+    
+    private void eat2()
+    {
+        if(dific.opcion ==1){
+            boolean b = getInmunidad2();
+            if (b == false){
+                Actor persona;
+                persona = getOneObjectAtOffset(0, 0, Persona.class);
+                if (persona != null)
+                {
+                    World world;
+                    world = getWorld();
+                    world.removeObject(persona);
+                    getWorld().showText("Perdiste! Tu puntaje fue de: " + perder.vacunas, 300, 250);
+                    Greenfoot.playSound("tos.wav");
+                }
             }
         }
     }

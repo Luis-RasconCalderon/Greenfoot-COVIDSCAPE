@@ -24,8 +24,11 @@ public class MyWorld extends World
         prespawnPer();
         prespawnVir();
         reset();
+        
     
     }
+    
+    
     //Creditos: Coding club(8/62020) https://www.youtube.com/watch?v=AVqbtL1es6E&t=313s
     //Método que reinicia el contador sin la necesidad de recompilar. 
     private void reset(){
@@ -36,7 +39,7 @@ public class MyWorld extends World
     
     //Define el método
     public void Background(){
-    setBackground(new GreenfootImage("bluerock.jpg"));    
+    setBackground(new GreenfootImage("fingerprint.jpg"));    
     }
     
     //Creditos de código: User: Pammota(21/6/2017) https://www.greenfoot.org/topics/59490/0

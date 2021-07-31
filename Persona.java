@@ -19,15 +19,15 @@ public class Persona extends Actor
         desinf2();
     }
     
+    //Escribe las instruccinones del juego al inicio
     public void instrucciones(){
         if (puntos.vacunas == 0){
             getWorld().showText("- Utiliza las flechas de tu teclado para moverte por el mapa. " , 300, 50);
             getWorld().showText("Instrucciones" , 300, 25);
             getWorld().showText("- Recoge vacunas y evita ser contagiado." , 300,75);
-            getWorld().showText("- Cada 5 vacunas que recogas, un nuevo virus aparecerá" , 300,100);
-            getWorld().showText("- Cada 10 vacunas, adquieres un estado de inmunidad y debes" , 300,125);
-            getWorld().showText("eliminar un virus obligatoriamente," , 300,150);
-            getWorld().showText("o no podrás seguir recogiendo vacunas." , 300,175);
+            getWorld().showText("- Cuando tengas estado de inmunidad debes" , 300,100);
+            getWorld().showText("eliminar un virus obligatoriamente" , 300,125);
+            getWorld().showText("o no podrás seguir recogiendo vacunas." , 300,150);
         }if (puntos.vacunas !=0){
             getWorld().showText("" , 300, 50);
             getWorld().showText("" , 300, 25);
@@ -39,6 +39,7 @@ public class Persona extends Actor
         }
     }
     
+    //Determina si el jugador está en un estado de inmunidad o no para el modo Fácil
     public boolean getInmunidad(){
         boolean inmunidad;
         inmunidad = true;
@@ -53,7 +54,7 @@ public class Persona extends Actor
          }
         return inmunidad;
     }
-    
+    //Determina si el jugador está en un estado de inmunidad o no para el modo Difícil
     public boolean getInmunidad2(){
         boolean inmunidad;
         inmunidad = true;
@@ -68,6 +69,8 @@ public class Persona extends Actor
          }
         return inmunidad;
     }
+    
+    //Verifica que el jugador esté en un estado de inmunidad en modo fácil de ser verdadero, el jugador puede eliminar un virus.
     private void desinf(){
         if(dificultad.opcion == 0){
             boolean a = getInmunidad();
@@ -80,12 +83,15 @@ public class Persona extends Actor
                     world = getWorld();
                     world.removeObject(virus);
                     contador.inmune = 0;
-                    Greenfoot.playSound("desinfeccion.wav");
+                    GreenfootSound  sound = new GreenfootSound("desinfeccion.wav");
+                    sound.setVolume(70);
+                    sound.play();
                 }
             }
         }
     }
     
+    //Verifica que el jugador esté en un estado de inmunidad en modo difícil de ser verdadero, el jugador puede eliminar un virus.
     private void desinf2(){
         if(dificultad.opcion == 1){
             boolean a = getInmunidad2();
@@ -98,12 +104,15 @@ public class Persona extends Actor
                     world = getWorld();
                     world.removeObject(virus);
                     contador.inmune = 0;
-                    Greenfoot.playSound("desinfeccion.wav");
+                    GreenfootSound  sound = new GreenfootSound("desinfeccion.wav");
+                    sound.setVolume(70);
+                    sound.play();
                 }
             }
         }
     }
     
+    //Hace aparecer un nuevo virus cada 10 puntos si el modo se encuentra en Fácil
     private void spawnVir(){
          if (dificultad.opcion == 0){
             if(contador.cont==10){
@@ -114,7 +123,7 @@ public class Persona extends Actor
             }
         }
     }
-    
+    //Hace aparecer un nuevo virus cada 5 puntos si el modo se encuentra en Difícil
     private void spawnVir2(){
          if (dificultad.opcion == 1){
             if(contador.cont==5){
@@ -131,7 +140,11 @@ public class Persona extends Actor
         getWorld().showText("Vacunas: " + puntos.vacunas, 100, 25);
         getWorld().showText("Nuevo virus: " + contador.cont, 300, 25);
         getWorld().showText("Inmunidad: " + contador.inmune, 500,25);
-        getWorld().showText("Modo: " + dificultad.opcion, 300,50);
+        if(dificultad.opcion == 0){
+            getWorld().showText("Modo: Fácil", 75,575);
+        }if(dificultad.opcion == 1){
+            getWorld().showText("Modo: Difícil", 75,575);
+        }
     }
     
     //Creditos de código: User: Pammota(21/6/2017) https://www.greenfoot.org/topics/59490/0
@@ -197,8 +210,10 @@ public class Persona extends Actor
                 }
             }
         }
-    } 
+    }
     
+    //Extraido de Greenfoot Tutorials y contribuciones propias
+    //Método que permite al jugador recoger vacunas
     private void vacunacion2()
     {
         if(dificultad.opcion == 1){

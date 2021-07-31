@@ -21,7 +21,8 @@ public class Virus extends Actor
     //Método que permite al virus moverse aleatoriamente por el mapa
     private void moveAndTurn()
     {
-        move(2);
+        int v = Greenfoot.getRandomNumber(5);
+        move(v);
         if (Greenfoot.getRandomNumber(100)<10)
         {
             turn(Greenfoot.getRandomNumber(90)-45);
@@ -35,7 +36,7 @@ public class Virus extends Actor
             turn(180);
         }
     }
-    
+    //Determina si el jugador está en un estado de inmunidad o no para el modo Fácil
     public boolean getInmunidad(){
         boolean inmunidad;
         inmunidad = true;
@@ -46,7 +47,7 @@ public class Virus extends Actor
          }
         return inmunidad;
     }
-    
+    //Determina si el jugador está en un estado de inmunidad o no para el modo Difícil
     public boolean getInmunidad2(){
         boolean inmunidad;
         inmunidad = true;
@@ -58,7 +59,7 @@ public class Virus extends Actor
         return inmunidad;
     }
     //Extraido de Greenfoot tutorials y contribuciones propias
-    //Método que permite al virus infectar a la persona para terminar el juego.
+    //Método que permite al virus infectar a la persona si los criteros del modo fácil se cumplen para terminar el juego.
     private void eat()
     {
         if(dific.opcion ==0){
@@ -72,12 +73,16 @@ public class Virus extends Actor
                     world = getWorld();
                     world.removeObject(persona);
                     getWorld().showText("Perdiste! Tu puntaje fue de: " + perder.vacunas, 300, 250);
-                    Greenfoot.playSound("tos.wav");
+                    GreenfootSound  sound = new GreenfootSound("tos.wav");
+                    sound.setVolume(90);
+                    sound.play();
                 }
             }
         }
     }
     
+    //Extraido de Greenfoot tutorials y contribuciones propias
+    //Método que permite al virus infectar a la persona si los criterios del modo difícil se cumplen para terminar el juego.
     private void eat2()
     {
         if(dific.opcion ==1){
@@ -91,10 +96,13 @@ public class Virus extends Actor
                     world = getWorld();
                     world.removeObject(persona);
                     getWorld().showText("Perdiste! Tu puntaje fue de: " + perder.vacunas, 300, 250);
-                    Greenfoot.playSound("tos.wav");
+                    GreenfootSound  sound = new GreenfootSound("tos.wav");
+                    sound.setVolume(90);
+                    sound.play();
                 }
             }
         }
     }
+    
     
 }

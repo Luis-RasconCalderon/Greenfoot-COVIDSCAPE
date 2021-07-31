@@ -4,7 +4,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * .
  * 
  * @Luis Rascón 
- * @Version 1- 20/7/2021
+ * @Version Final- 30/7/2021
  */
 public class MyWorld extends World
 {
@@ -18,16 +18,13 @@ public class MyWorld extends World
      */
     public MyWorld()
     {    
-        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 600, 1); 
         prespawnVac();
         prespawnPer();
         prespawnVir();
         reset();
         
-    
     }
-    
     
     //Creditos: Coding club(8/62020) https://www.youtube.com/watch?v=AVqbtL1es6E&t=313s
     //Método que reinicia el contador sin la necesidad de recompilar. 
@@ -37,9 +34,9 @@ public class MyWorld extends World
         inmune = 0;
     }
     
-    //Define el método
+    //Método que define la imagen de fondo del mapa
     public void Background(){
-    setBackground(new GreenfootImage("fingerprint.jpg"));    
+        setBackground(new GreenfootImage("fingerprint.jpg"));
     }
     
     //Creditos de código: User: Pammota(21/6/2017) https://www.greenfoot.org/topics/59490/0

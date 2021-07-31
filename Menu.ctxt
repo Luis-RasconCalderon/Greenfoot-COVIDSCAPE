@@ -1,0 +1,13 @@
+#BlueJ class context
+comment0.target=Menu
+comment0.text=Creditos\ para\ clase\ y\ funci\u00F3n\ entera\:\ Jaime\ BG\ (16/3/2020)https\://youtu.be/ik5GVQhzf9A\ \ \r\n
+comment1.params=
+comment1.target=Menu()
+comment2.params=
+comment2.target=void\ music()
+comment2.text=M\u00FAsica\ creada\ en\ Groovepad\ iOS.\ https\://apps.apple.com/es/app/groovepad-caja-de-ritmos/id1454398991\ \r\n\ Paquete\ de\ sonidos\:\ Lo-Fi\ Chillhop.\ \r\n\ Autor\ de\ paquete\:\ Tjam\r\n
+comment3.params=
+comment3.target=void\ preparacionMenu()
+comment4.params=
+comment4.target=void\ act()
+numComments=5
